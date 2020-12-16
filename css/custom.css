@@ -34,7 +34,11 @@ h1 {
 }
 
 .main_title {
+    padding-top: 150px;
+    padding-bottom: 10px;
+    color: white;
     font-size: 5em;
+
 }
 
 h3 {
@@ -146,16 +150,23 @@ div.img-with-text:hover {
 }
 
 #banner {
-    width: 95%;
+    width: 100%;
+    height: 450px;
     margin: auto;
-    margin-top: 60px;
+    text-align: center;
+    margin-top: 0px;
     margin-bottom: 60px;
+    background-color: #346DF1;
+    opacity: 0.8;
     padding: auto;
+    color: white;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+
 }
+
+
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
