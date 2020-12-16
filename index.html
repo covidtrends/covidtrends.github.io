@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Covid Trends</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-orange.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <!-- Web fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700|Source+Serif+Pro:700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+    <!-- favicon.ico. Place these in the root directory. -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="shortcut icon" type="image/jpg" href="img/favicon.ico" />
+
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Chart JS -->
+
+
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+
+
+
+</head>
+
+<body>
+
+
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <i class="material-icons md-light">equalizer</i>
+                <!-- Title -->
+                <span class="mdl-layout-title">Covid Trends</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="#audio">Cross Correlation</a>
+                    <a class="mdl-navigation__link" href="#lyrics">Significance</a>
+                    <a class="mdl-navigation__link" href="#comparison">Forecasting</a>
+                    <a class="mdl-navigation__link" href="https://github.com/com-480-data-visualization/com-480-project-js" target="_blank">Github repository</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content wrapper">
+
+
+            <!-- Banner -->
+
+
+
+
+
+
+
+            <div class="page-content">
+
+
+
+
+
+
+
+
+
+
+
+                <!-- Title -->
+                <div class="title">
+                    <h1 class="main_title">Covid Trends</h1>
+                    <h2>Predicting covid deaths with Google Trends</h2>
+                    <hr>
+                </div>
+
+                <!-- Intro -->
+                <div id="intro">
+                    <h4> "US could see a 'very deadly December' with tens of thousands of coronavirus death to come, computer model predicts" , "The COVID 19 CRISIS : 300,000 Deaths By December?", "A model predicts COVID 19 death toll will double" … 
+                    This kind of headline has continued to appear in the international press since the start of the health crisis linked to COVID 19. Predictions of the number of cases or deaths are multiplying and differing between them. How many of us find ourselves skeptical of these many predictions and doubt the numbers. </h4>
+                  <p>We propose, throughout this datastory, a method that would improve those predictions by including the information present on Google Trends. We are focusing the work around 3 main indicators: Research concerning the symptoms of COVID-19, those concerning social life through outings to restaurants for example and research related to activities and tutorial on how to make a mask for instance. We propose to compare the contribution of each request in order to lead to an improvement of the prediction. Let’s dive with us in this through our operations during the COVID 19 pandemic and find out what the data shows as changes in our lifestyle.</p>
+
+
+                    <p>
+                        In order to perform a data analysis of COVID-19 deaths and Google Trends, we need to make several hypotheses. First, an epidemic spreads within a population and therefore epidemic peaks occur at different times around the world. Moreover, we have observed in 2020 the unilateral political measures taken to counter the health crisis. This is why focusing on a single country is important in order to have a homogeneous population subject to the same restrictions at the same time. It is therefore more interesting to focus our analysis on a small region: France. 
+                        Moreover, we focus here only on the mortality of COVID-19 and not on the cases. Indeed, covid positive cases depends on the testing capacity and therefore are less representative than the covid deaths of the different epidemic waves.</p>
+
+
+                    <p>Let’s first focus on the COVID-19 deaths data. We downloaded the data from the <a href="https://opendata.ecdc.europa.eu/covid19/casedistribution">EU open data portal</a> and then preprocessed them.</p>
+
+
+                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/3.embed" height="525" width="100%"></iframe>
+
+
+                    <p>Now that we have the COVID-19 deaths, let’s extract the Google Trends data : the key words or google requests. Which key-words do we choose ? We decided to select different categories of Google requests. The main idea idea of the category is to have similar keywords within the same group in order to compare them between them. For instance, we want to compare different symptoms and their relevance with the COVID-19 deaths. We present the different categories and associated keywords in the following table.</p>
+
+
+
+
+                </div>
+
+
+                <div id="tables-content">
+
+
+
+
+<table id="customers">
+  <tr>
+    <th>Symptomes</th>
+  </tr>
+  <tr>
+    <td>fievre</td>
+  </tr>
+  <tr>
+    <td>toux seche</td>
+  </tr>
+  <tr>
+    <td>fatigue</td>
+  </tr>
+  <tr>
+    <td>courbatures</td>
+  </tr>
+  <tr>
+    <td>maux de gorge</td>
+  </tr>
+  <tr>
+    <td>perte du gout</td>
+  </tr>
+  <tr>
+    <td>perte odorat</td>
+  </tr>
+  <tr>
+    <td>essoufflement</td>
+  </tr>
+  <tr>
+    <td>diarrhee</td>
+  </tr>
+  <tr>
+    <td>maux de tete</td>
+  </tr>
+</table>
+
+
+
+<table id="customers">
+  <tr>
+    <th>Social</th>
+  </tr>
+  <tr>
+    <td>blablacar</td>
+  </tr>
+  <tr>
+    <td>taxi</td>
+  </tr>
+  <tr>
+    <td>house party</td>
+  </tr>
+  <tr>
+    <td>Uber</td>
+  </tr>
+  <tr>
+    <td>top cafe</td>
+  </tr>
+  <tr>
+    <td>top bar</td>
+  </tr>
+  <tr>
+    <td>plato</td>
+  </tr>
+  <tr>
+    <td>top restaurant</td>
+  </tr>
+  <tr>
+    <td>Comparateur vol</td>
+  </tr>
+  <tr>
+    <td>Couvre-feu</td>
+  </tr>
+</table>
+
+
+
+<table id="customers">
+  <tr>
+    <th>How to ?</th>
+  </tr>
+  <tr>
+    <td>savoir si on a le coronavirus</td>
+  </tr>
+  <tr>
+    <td>mettre un masque</td>
+  </tr>
+  <tr>
+    <td>calculer son IMC</td>
+  </tr>
+  <tr>
+    <td>faire du pain</td>
+  </tr>
+  <tr>
+    <td>calculer distance 100 km</td>
+  </tr>
+  <tr>
+    <td>faire un masque sans machine</td>
+  </tr>
+  <tr>
+    <td>se transmet le coronavirus</td>
+  </tr>
+  <tr>
+    <td>fabriquer un gel hydroalcoolique</td>
+  </tr>
+  <tr>
+    <td>se transmet le coronavirus</td>
+  </tr>
+  <tr>
+    <td>mettre un masque chirurgical</td>
+  </tr>
+</table>
+
+</div>
+
+
+<p>How did we selected the different categories ? Here is some insights :</p>
+<p><b>Symptoms</b> : Google keywords related to covid symptoms as cough, fever, loss of taste, etc. Those keywords give an insight of the current concerns of google users about the COVID 19 symptoms and can explain and can give a more precise idea of ​​the evolution of the virus.</p>
+<p><b>Social</b> : Google keywords related to social activities such as top restaurant, top bar, etc. Those keywords give some details on the various social "movements". The idea would be to explain a link between these indicators and the evolution of COVID-19. This would be particularly interesting given the many restrictions around social life that are implemented by governments. </p>
+<p><b>How to</b> : Google keywords of the top 10 how to questions in 2020 related to different fields. We are looking, through these keywords, to show if there is a link between the increase in questions about how to make a mask and the evolution of the virus.</p>
+
+<p>Now that we have our Google requests dataset, let’s plot them. You can display or not each key-word by clicking on its label in the legend.</p>
+
+                    
+
+
+
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/12.embed" height="525" width="100%"></iframe>
+
+                <div class="comment">
+                    <div class="comment-title">
+                        A strong first wave
+                    </div>
+                    <div class="comment-content">
+                        <p>The symptom key words already reveal some insights. We see clearly many requests for all the key words in March/April 2020 (the first epidemic wave in France). What else do you see ? </p>
+                    </div>
+                </div>
+
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/7.embed" height="525" width="100%"></iframe>
+
+
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/9.embed" height="525" width="100%"></iframe>
+
+
+                
+
+
+                <!-- Audio Analysis -->
+                <div id="audio">
+                    <h1>Cross-correlation Analysis</h1>
+                    <h4>Are COVID deaths and Google Trends related ?</h4>
+                    <hr>
+                    <p>Now that we have the COVID-19 deaths data and the Google trends for our different categories, we can compare them. In this section, we will perform a spearman cross-correlation analysis between the COVID-19 deaths and the Google Trends key-words for each category. Let’s see how it looks like.</p>
+
+
+                    <!-- Add buttons -->
+                    <!-- Add 2 buttons -->
+                    
+
+
+
+                    
+
+                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/18.embed" height="525" width="100%"></iframe>
+
+                    <div class="comment">
+                        <div class="comment-title">
+                            What can we see?
+                        </div>
+                        <div class="comment-content">
+                            <p>We can see the diminution of the "acousticness" value for more modern musicians. As expected, Eminem seems to be the loudest and the most energetic singer. What else can you observe?</p>
+                        </div>
+                    </div>
+
+
+                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/23.embed" height="525" width="100%"></iframe>
+
+                    <div class="comment">
+                        <div class="comment-title">
+                            What can we see?
+                        </div>
+                        <div class="comment-content">
+                            <p>We can see the diminution of the "acousticness" value for more modern musicians. As expected, Eminem seems to be the loudest and the most energetic singer. What else can you observe?</p>
+                        </div>
+                    </div>
+
+                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/20.embed" height="525" width="100%"></iframe>
+
+                    <div class="comment">
+                        <div class="comment-title">
+                            What can we see?
+                        </div>
+                        <div class="comment-content">
+                            <p>We can see the diminution of the "acousticness" value for more modern musicians. As expected, Eminem seems to be the loudest and the most energetic singer. What else can you observe?</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Lyrics Analysis -->
+                <div id="lyrics">
+                    <h1>Statistical Significance</h1>
+                    <hr>
+                    <p>Now that the different features have been selected and the first step of the study has been carried out, we propose a second approach to see the relationship differently. The idea is to fit a linear regressor ( AR(1) ) on the data. The model takes as external variables the index corresponding to each keyword.</p>
+                    <p>
+                        Let’s fit our model on the data and extract the relevant features. The idea is to have an insight on the significant features for the prediction model.
+                        The metric used is a statistical test on the p-value, where a p-value less than the significant value of 0.05 means that there's no significant relation between the feature and the deaths data.
+                        This procedure is applied to the 3 different categories and the results for the most interesting requests per category in the following visualizations.
+                    </p>
+
+                </div>
+
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/28.embed" height="525" width="100%"></iframe>
+
+                <div class="comment">
+                    <div class="comment-title">
+                        What can we see ?
+                    </div>
+                    <div class="comment-content">
+                        <p>We notice that 3 requests are significantely linked to the COVID deaths : Diarrhee, loss of smell and loss of taste. This is interesting since the queries related to the most recognizable COVID symptoms tend to have a smaller p-values than the other. This allows to confirm the conclusions of the correlation chapter. However, the diarhee keyword seems like an outlier, but looking at its time series, it seems that it follows the same evolution as the death data.</p>
+                    </div>
+                </div>
+
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/30.embed" height="525" width="100%"></iframe>
+
+
+
+                <div class="comment">
+                    <div class="comment-title">
+                        What can we see ?
+                    </div>
+                    <div class="comment-content">
+                        <p>This time, the results are unexpected. The p value tends to be smaller for the requests related to blablacar, uber and flights comparator. These requests are negatively correlated to the evolution of death. But none of the requests have a significant effect on the death data, which is quiete surprising. We would expect a stronger statistical relation.</p>
+                    </div>
+                </div>
+
+
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/32.embed" height="525" width="100%"></iframe>
+
+                <div class="comment">
+                    <div class="comment-title">
+                        What can we see ?
+                    </div>
+                    <div class="comment-content">
+                        <p>Finally, the how to indicators are quiete interesting. We observe that the most significant requests are the one related to how to design a home mask for example, or how to calculate the IMC. Those requests are totally related to the COVID situation and especially to the lockdown situation.</p>
+                    </div>
+                </div>
+
+
+                <div id="comparison">
+                  <h1>Forecasting</h1>
+                  <h4>Can we forecast the COVID-19 deaths using Google Trends ?</h4>
+                  <hr>
+                  <p>
+                  Let's explore the one step ahead forecast using an AR-1 model. The data are split into a train set, which stops at the end of the first wave, and a test set. The goal of this part is to explore the performance of Google Trends data in improving the prediction of the second wave of COVID-19 .The MRE is computed between the base model and the trend model. The idea here is to observe the effect of each request on the MRE and look for improvements. Thus, a trend model is computed for each request. The resulting improvement (or deterioration) of the MRE is then plotted and some conclusions are made.</p>
+
+                  <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/34.embed" height="525" width="100%"></iframe>
+
+                  <div class="comment">
+                    <div class="comment-title">
+                        What can we see ?
+                    </div>
+                    <div class="comment-content">
+                        <p>The highest MAE improvement appears when we include the loss of smell in the model, and positive improvement is still visible for all the COVID-19's specific symptoms. This result is interesting : By including the requests related to the most particular COVID symptoms, we improve the forecasting model.</p>
+                    </div>
+                  </div>
+
+                  <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/36.embed" height="525" width="100%"></iframe>
+
+                  <div class="comment">
+                    <div class="comment-title">
+                        What can we see ?
+                    </div>
+                    <div class="comment-content">
+                        <p>For this category, we expected those kind of results : The requests that helps improving the model are the queries that are commom to the two waves. For example, there's a decrease of the queries related to the flight comparator because of lockdown, and this effect is present in the 2 waves. But, if we take the plato query, which was a game who got really popular in the first wave of COVID 19 and totally disappeared in the second one, we get an important deterioration of the MAE. This could mean that the social phenomenas in the two waves are different. However, we would have expected a larger effect for the "The Top cafe" and "Top restaurant" keywords. The smaller oberseved effect could be explained by the fact that the model is still a simple model and doesn"t learn to "anticipate", since these two keywords should have an indicator role before the wave arrives.</p>
+                    </div>
+                  </div>
+
+
+                  <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/38.embed" height="525" width="100%"></iframe>
+
+                  <div class="comment">
+                    <div class="comment-title">
+                        What can we see ?
+                    </div>
+                    <div class="comment-content">
+                        <p>For this category, we expected those kind of results</p>
+                    </div>
+                  </div>
+
+                </div>
+
+
+
+                
+
+
+                <div id="authors">
+
+                    <h1>Authors</h1>
+
+                    <p>Made by Baudoin de Sury, Mehdi Akeddar and Jérémy Plassman. </p>
+                </div>
+
+                <div style="height: 100px;"></div>
+
+            </div>
+            <footer>
+
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>
