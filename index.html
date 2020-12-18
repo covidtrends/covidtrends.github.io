@@ -343,7 +343,7 @@
                         What can we see ?
                     </div>
                     <div class="comment-content">
-                        <p>We notice that 3 requests are significantly linked to the COVID deaths: Diarrhea, loss of smell, and loss of taste. This is interesting since the queries related to the most recognizable COVID symptoms tend to have smaller p-values than the other. This allows confirming the conclusions of the correlation chapter. However, the diarrhea keyword seems like an outlier, but looking at its time series, it seems that it follows the same evolution as the death data.</p>
+                        <p>We notice that 3 requests are significantly linked to the COVID deaths: shortness of breath, loss of smell, and loss of taste. This is interesting since the queries related to the most recognizable COVID symptoms tend to have smaller p-values than the other. This allows confirming the conclusions of the correlation chapter. These keywords are completely dependant on the pandemic situation.</p>
                     </div>
                 </div>
 
@@ -378,7 +378,7 @@
                   <h4>Can we forecast the COVID-19 deaths using Google Trends ?</h4>
                   <hr>
                   <p>
-                  Let's explore the one step ahead forecast using an AR-1 model. The data are split into a train set, which stops at the end of the first wave, and a test set. The goal of this part is to explore the performance of Google Trends data in improving the prediction of the second wave of COVID-19 . The MRE is computed between the base model and the trend model. The idea here is to observe the effect of each request on the MRE and look for improvements. Thus, a trend model is computed for each request. The resulting improvement (or deterioration) of the MRE is then plotted and some conclusions are made.</p>
+                  Let's explore the one step ahead forecast using an AR-1 model. The predictions are made on the second wave with the data that happen before a specific date we are predicting. The goal of this part is to explore the performance of Google Trends data in improving the prediction of the second wave of COVID-19. The MAE is computed between the base model and the trend model. The idea here is to observe the effect of each request on the MAE and look for improvements. Thus, a trend model is computed for each request. The resulting improvement (or deterioration) of the MAE is then plotted and some conclusions are made.</p>
 
                   <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~covidtrends/34.embed" height="525" width="100%"></iframe>
 
@@ -435,7 +435,7 @@
 
                     <h1>Authors</h1>
 
-                    <p>Made by Baudoin de Sury, Mehdi Akeddar and Jérémy Plassman. </p>
+                    <p>Made by Baudoin de Sury, Mehdi Akeddar and Jérémy Plassmann. </p>
                 </div>
 
                 <div style="height: 100px;"></div>
